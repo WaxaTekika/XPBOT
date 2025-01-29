@@ -168,7 +168,7 @@ def main():
 
     application = Application.builder().token(TOKEN).build()
 
-    application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("XP", start))
     application.add_handler(MessageHandler(TEXT, handle_xp))
 
     application.run_polling()
