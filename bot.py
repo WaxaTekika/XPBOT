@@ -141,7 +141,7 @@ async def handle_xp(update: Update, context: CallbackContext) -> None:
             f"One third of month 1 total prize pool will be added to the start of month 2 and another third to the start of month 3"
         )
 
-        # Remove user from active session so they must retype /XP to interact again
+        # REMOVE USER FROM ACTIVE SESSION IMMEDIATELY AFTER RESPONSE
         active_sessions.remove(user_id)
 
     except ValueError:
