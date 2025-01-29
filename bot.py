@@ -118,8 +118,7 @@ async def handle_xp(update: Update, context: CallbackContext) -> None:
 
     # If user is not in an active session, ignore input until they type /XP
     if user_id not in active_sessions:
-        await update.message.reply_text("Please start a session by typing /XP.")
-        return
+        return  # Simply ignore the message instead of sending another prompt
 
     try:
         user_xp = int(update.message.text)
@@ -141,13 +140,14 @@ async def handle_xp(update: Update, context: CallbackContext) -> None:
             f"One third of month 1 total prize pool will be added to the start of month 2 and another third to the start of month 3"
         )
 
-        # REMOVE USER FROM ACTIVE SESSION IMMEDIATELY AFTER RESPONSE
+        # ✅ REMOVE USER FROM ACTIVE SESSION AFTER RESPONSE
         active_sessions.remove(user_id)
 
     except ValueError:
         await update.message.reply_text("Please enter a valid number for your XP.")
     except RuntimeError as e:
         await update.message.reply_text(f"Error: {e}")
+
 
 # Main function
 def main():
